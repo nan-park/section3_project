@@ -51,16 +51,19 @@ def upload_data_book_info(conn=conn):
         book_name VARCHAR,
         authors VARCHAR,
         publisher VARCHAR,
-        loan_count INTEGER
+        loan_count INTEGER,
+        publish_year INTEGER
         );""")
     book_info = data_book_info(API_KEY)
     # (체크) book_name 중에 가끔 마지막에 공백 있는 이름이 있음. 공백 빼고 저장하기(현재 그냥 저장한 상태) strip()
     length = len(book_info)
     count = 1
     for data in book_info:
-        cur.execute("INSERT OR IGNORE INTO book_info VALUES (%s, %s, %s, %s, %s)", (data['isbn13'], data['bookname'], data['authors'], data['publisher'], data['loan_count']))
+        cur.execute("INSERT INTO book_info VALUES (%s, %s, %s, %s, %s, %s);", (data['isbn13'], data['bookname'].strip(), data['authors'], data['publisher'], data['loan_count'], data['publication_year']))
         print(f"진행도 {count}/{length}")
         count += 1
     conn.commit()
     cur.close()
+upload_data_book_info()
+
 
