@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block question%}재밌게 읽은 책 이름을 입력하세요{% endblock %}
+{% block lib_content %}{{lib}}{% endblock %}
+{% block book_content %}{% endblock %}
+{% block content %}
+<form action="#" method="post">
+    <p>Name:</p>
+    <p><input type="text" name="nm"/></p>
+    <p><input type="submit" value="submit"></p>
+</form>
+{% endblock %}

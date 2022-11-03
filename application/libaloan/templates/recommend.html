@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block question%}추천 도서{% endblock %}
+{% block lib_content %}{{lib}}{% endblock %}
+{% block book_content %}{{book}}{% endblock %}
+{% block content %}
+<!--추천 도서 20권 리스트-->
+
+<ul class="list-group list-group-flush">
+    {% for item in item_lst %}
+    <li class="list-group-item">{{item['book_name']}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
